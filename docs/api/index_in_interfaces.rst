@@ -16,6 +16,7 @@ pycatia.in_interfaces
    pycatia/in_interfaces/documentation_setting_att
    pycatia/in_interfaces/documents
    pycatia/in_interfaces/drafting_page_setup
+   pycatia/in_interfaces/editor
    pycatia/in_interfaces/file
    pycatia/in_interfaces/file_component
    pycatia/in_interfaces/file_system

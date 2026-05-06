@@ -10,6 +10,7 @@ from pycatia.enumeration.enumeration_types import cat_script_language
 from pycatia.exception_handling.exceptions import CATIAApplicationException
 from pycatia.in_interfaces.documents import Documents
 from pycatia.in_interfaces.documents import get_document_object
+from pycatia.in_interfaces.editor import Editor
 from pycatia.in_interfaces.file_system import FileSystem
 from pycatia.in_interfaces.printer import Printer
 from pycatia.in_interfaces.printers import Printers
@@ -96,6 +97,19 @@ class Application(AnyObject):
             return get_document_object(active_doc_com)
         except com_error:
             raise CATIAApplicationException('Is there an active document?')
+
+    @property
+    def active_editor(self) -> Editor:
+        """
+        Returns the active editor for CATIA sessions that expose the
+        ``ActiveEditor`` automation object.
+
+        :rtype: Editor
+        """
+        try:
+            return Editor(self.com_object.ActiveEditor)
+        except com_error:
+            raise CATIAApplicationException('Is there an active editor?')
 
     @property
     def active_printer(self) -> Printer:
